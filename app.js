@@ -60,8 +60,8 @@ function riskReasons(data) {
   if (data.pregnant) reasons.push("Schwangerschaft oder Stillzeit");
   if (data.bloodThinner) reasons.push("blutgerinnungshemmende Medikamente");
   if (data.kidney) reasons.push("Nierenerkrankung oder Nierensteine");
-  if (data.calcium) reasons.push("erhoehte Calciumwerte");
-  if (data.sarcoidosis) reasons.push("Sarkoidose oder Nebenschilddruesen-Erkrankung");
+  if (data.calcium) reasons.push("erhöhte Calciumwerte");
+  if (data.sarcoidosis) reasons.push("Sarkoidose oder Nebenschilddrüsen-Erkrankung");
   if (data.otherD || data.currentIntake === "high") reasons.push("bereits hohe Vitamin-D-Einnahme");
   return reasons;
 }
@@ -74,20 +74,20 @@ function buildResult(data) {
   if (risks.length) {
     return {
       title: "Bitte nicht selbst dosieren",
-      copy: "Bei deinen Angaben gibt es mindestens einen kritischen Punkt. SonnVita sollte in diesem Fall nur nach aerztlicher oder apothekerlicher Ruecksprache verwendet werden.",
+      copy: "Bei deinen Angaben gibt es mindestens einen kritischen Punkt. SonnVita sollte in diesem Fall nur nach ärztlicher oder apothekerlicher Rücksprache verwendet werden.",
       items: [
         `Kritischer Punkt: ${risks.join(", ")}.`,
-        "Nimm diese Angaben zum Arzt- oder Apothekengespraech mit.",
-        "Bei Langzeiteinnahme sollten Calciumwerte und Nierenfunktion geprueft werden.",
+        "Nimm diese Angaben zum Arzt- oder Apothekengespräch mit.",
+        "Bei Langzeiteinnahme sollten Calciumwerte und Nierenfunktion geprüft werden.",
       ],
     };
   }
 
   if (ng === null) {
-    const interval = data.sun === "high" ? "eher kein Start ohne Blutwert oder nur nach Ruecksprache" : "1 Tropfen alle 5 Tage als Packungs-Intervall";
+    const interval = data.sun === "high" ? "eher kein Start ohne Blutwert oder nur nach Rücksprache" : "1 Tropfen alle 5 Tage als Packungs-Intervall";
     return {
-      title: "Erst Blutwert klaeren",
-      copy: "Ohne 25-OH-D-Blutwert ist keine persoenliche Dosierung sauber ableitbar. Die sichere Orientierung ist deshalb: Blutwert bestimmen und die Packungsangabe nicht ueberschreiten.",
+      title: "Erst Blutwert klären",
+      copy: "Ohne 25-OH-D-Blutwert ist keine persönliche Dosierung sauber ableitbar. Die sichere Orientierung ist deshalb: Blutwert bestimmen und die Packungsangabe nicht überschreiten.",
       items: [
         `Packungs-Intervall: ${interval}.`,
         `1 Tropfen alle 5 Tage entspricht durchschnittlich ca. ${averageDaily} I.E. Vitamin D3 pro Tag.`,
@@ -99,32 +99,32 @@ function buildResult(data) {
   if (ng < 10) {
     return {
       title: "Sehr niedriger Wert: Arzt-Plan sinnvoll",
-      copy: "Dein Wert liegt deutlich niedrig. Eine Aufsaettigung sollte nicht ueber einen QR-Rechner festgelegt werden, sondern mit Blutwert-Kontrolle.",
+      copy: "Dein Wert liegt deutlich niedrig. Eine Aufsättigung sollte nicht über einen QR-Rechner festgelegt werden, sondern mit Blutwert-Kontrolle.",
       items: [
         `Gemessener Wert: ${ng.toFixed(1)} ng/ml.`,
-        "Besprich eine zeitlich begrenzte Aufsaettigung und Kontrollmessung.",
-        "Bis zur Klaerung die angegebene Tagesdosis nicht ueberschreiten.",
+        "Besprich eine zeitlich begrenzte Aufsättigung und Kontrollmessung.",
+        "Bis zur Klärung die angegebene Tagesdosis nicht überschreiten.",
       ],
     };
   }
 
   if (ng < 20) {
     return {
-      title: "Niedriger Wert: gezielt abklaeren",
-      copy: "Dein Wert ist niedrig. Das Packungs-Intervall kann eine Orientierung sein, die konkrete Aufsaettigung sollte aber aerztlich festgelegt werden.",
+      title: "Niedriger Wert: gezielt abklären",
+      copy: "Dein Wert ist niedrig. Das Packungs-Intervall kann eine Orientierung sein, die konkrete Aufsättigung sollte aber ärztlich festgelegt werden.",
       items: [
         `Gemessener Wert: ${ng.toFixed(1)} ng/ml.`,
-        "Orientierung fuer das Gespraech: 1 Tropfen alle 5 Tage, sofern keine Gegenanzeigen bestehen.",
+        "Orientierung für das Gespräch: 1 Tropfen alle 5 Tage, sofern keine Gegenanzeigen bestehen.",
         "Nach 8 bis 12 Wochen Blutwert, Calcium und bei Bedarf Nierenfunktion kontrollieren lassen.",
       ],
     };
   }
 
   if (ng < 30) {
-    const weightNote = data.weight >= 95 ? "Bei hoeherem Koerpergewicht kann der Bedarf groesser sein; bitte mit Blutwertkontrolle klaeren." : "Koerpergewicht unauffaellig fuer die Standard-Orientierung.";
+    const weightNote = data.weight >= 95 ? "Bei höherem Körpergewicht kann der Bedarf größer sein; bitte mit Blutwertkontrolle klären." : "Körpergewicht unauffällig für die Standard-Orientierung.";
     return {
-      title: "Unterer Bereich: Standard-Intervall pruefen",
-      copy: "Dein Wert liegt im unteren Bereich. Als Orientierung passt die Fuenf-Tagesdosierung, sofern Arzt oder Apotheke keine andere Empfehlung geben.",
+      title: "Unterer Bereich: Standard-Intervall prüfen",
+      copy: "Dein Wert liegt im unteren Bereich. Als Orientierung passt die Fünf-Tagesdosierung, sofern Arzt oder Apotheke keine andere Empfehlung geben.",
       items: [
         `Gemessener Wert: ${ng.toFixed(1)} ng/ml.`,
         `Orientierung: 1 Tropfen alle ${PRODUCT.daysPerDrop} Tage.`,
@@ -134,10 +134,10 @@ function buildResult(data) {
   }
 
   if (ng <= 50) {
-    const sunNote = data.sun === "high" ? "Bei viel Sonne kann eine Pause oder ein laengeres Intervall sinnvoll sein." : "Das Packungs-Intervall ist als Erhaltungs-Orientierung plausibel.";
+    const sunNote = data.sun === "high" ? "Bei viel Sonne kann eine Pause oder ein längeres Intervall sinnvoll sein." : "Das Packungs-Intervall ist als Erhaltungs-Orientierung plausibel.";
     return {
       title: "Zielbereich: eher erhalten",
-      copy: "Dein Wert liegt in einem haeufig genutzten Orientierungsbereich. Jetzt geht es eher um Erhaltung als um Hochdosierung.",
+      copy: "Dein Wert liegt in einem häufig genutzten Orientierungsbereich. Jetzt geht es eher um Erhaltung als um Hochdosierung.",
       items: [
         `Gemessener Wert: ${ng.toFixed(1)} ng/ml.`,
         `Maximale Orientierung ohne Sonderplan: 1 Tropfen alle ${PRODUCT.daysPerDrop} Tage.`,
@@ -148,10 +148,10 @@ function buildResult(data) {
 
   return {
     title: "Hoher Wert: keine Hochdosierung",
-    copy: "Dein Wert ist bereits hoch genug fuer eine vorsichtige Einordnung. Nimm zusaetzliches hochdosiertes Vitamin D nur nach Ruecksprache.",
+    copy: "Dein Wert ist bereits hoch genug für eine vorsichtige Einordnung. Nimm zusätzliches hochdosiertes Vitamin D nur nach Rücksprache.",
     items: [
       `Gemessener Wert: ${ng.toFixed(1)} ng/ml.`,
-      "Keine Steigerung der Einnahme ueber diesen Check.",
+      "Keine Steigerung der Einnahme über diesen Check.",
       "Bei weiterer Einnahme Calciumwerte und Nierenfunktion kontrollieren lassen.",
     ],
   };
@@ -175,7 +175,7 @@ function validateVisibleStep() {
   const inputs = [...steps[currentStep].querySelectorAll("input[required], select[required]")];
   const invalid = inputs.find((input) => !input.checkValidity());
   if (invalid) {
-    validationMessage.textContent = "Bitte fuelle zuerst das markierte Feld aus.";
+    validationMessage.textContent = "Bitte fülle zuerst das markierte Feld aus.";
     invalid.reportValidity();
     invalid.focus();
     return false;
@@ -207,7 +207,7 @@ form.addEventListener("submit", (event) => {
 leadForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const note = document.querySelector("#lead-note");
-  note.textContent = "Danke. Im Prototyp wurde der Kontakt lokal bestaetigt; fuer Live-Betrieb wird hier dein Marketing-Tool angebunden.";
+  note.textContent = "Danke. Im Prototyp wurde der Kontakt lokal bestätigt; für Live-Betrieb wird hier dein Marketing-Tool angebunden.";
   leadForm.reset();
 });
 

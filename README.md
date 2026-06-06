@@ -1,12 +1,12 @@
 # SonnVita QR Dosierungs-Check
 
-Mobile QR-Landingpage fuer SOS-Apo / SonnVita Vitamin D3 + K2 Tropfen.
+Mobile QR-Landingpage für SOS-Apo / SonnVita Vitamin D3 + K2 Tropfen.
 
 ## Produktbasis
 
 - 1 Tropfen = 5.000 I.E. Vitamin D3
-- 1 Tropfen = 100 ug Vitamin K2 MK-7
-- 1 Tropfen entspricht einer Fuenf-Tagesdosierung
+- 1 Tropfen = 100 µg Vitamin K2 MK-7
+- 1 Tropfen entspricht einer Fünf-Tagesdosierung
 
 ## Deployment
 
@@ -14,4 +14,4 @@ Static Site ohne Build-Step. Als Publish Directory wird das Repository-Root verw
 
 ## Wichtiger Hinweis
 
-Die Ergebnislogik dient der Orientierung und ersetzt keine aerztliche Beratung.
+Die Ergebnislogik dient der Orientierung und ersetzt keine ärztliche Beratung.
