@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: sonnvita-qr-check
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SonnVita D3 + K2 Dosierungs-Check | SOS-Apo</title>
+    <meta
+      name="description"
+      content="Mobile QR-Landingpage fuer SonnVita Vitamin D3 + K2 Tropfen mit kurzem Sicherheits- und Dosierungs-Orientierungscheck."
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar" aria-label="SOS-Apo SonnVita">
+      <img class="brand-logo" src="./assets/sos-apo-logo.png" alt="SOS-Apo">
+      <div>
+        <strong>SonnVita</strong>
+        <span>SonnVita D3 + K2</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">QR-Check fuer deine Einnahme</p>
+          <h1>SonnVita Vitamin D3 + K2 richtig einordnen</h1>
+          <p>
+            1 Tropfen enthaelt 5.000 I.E. Vitamin D3 und 100 ug Vitamin K2.
+            Das entspricht einer Fuenf-Tagesdosierung.
+          </p>
+          <a class="primary-action" href="#check">Check starten</a>
+        </div>
+        <img src="./assets/hero.png" alt="SonnVita Vitamin D3 + K2 Produktverpackung">
+      </section>
+
+      <section class="facts" aria-label="Produktdaten">
+        <article>
+          <span>1 Tropfen</span>
+          <strong>5.000 I.E.</strong>
+          <small>Vitamin D3</small>
+        </article>
+        <article>
+          <span>1 Tropfen</span>
+          <strong>100 ug</strong>
+          <small>Vitamin K2 MK-7</small>
+        </article>
+        <article>
+          <span>Intervall</span>
+          <strong>5 Tage</strong>
+          <small>laut Fuenf-Tagesdosierung</small>
+        </article>
+      </section>
+
+      <section id="check" class="check-shell">
+        <div class="section-heading">
+          <p class="eyebrow">3-Schritt-QR-Check</p>
+          <h2>Finde deine sinnvolle Orientierung</h2>
+          <p>
+            Der Check ersetzt keine aerztliche Beratung. Er hilft dir, deinen
+            Blutwert, dein Gewicht und wichtige Ausschlussgruende strukturiert
+            vorzubereiten.
+          </p>
+        </div>
+
+        <form id="dose-form" novalidate>
+          <div class="progress" aria-label="Fortschritt">
+            <span class="is-active">1</span>
+            <span>2</span>
+            <span>3</span>
+          </div>
+
+          <fieldset class="step is-active" data-step="1">
+            <legend>Darf ich SonnVita selbst einnehmen?</legend>
+            <p class="helper">Bitte ehrlich beantworten. Ein Ja bei kritischen Punkten stoppt die Selbst-Einnahme.</p>
+
+            <label class="select-row">
+              <span>Alter</span>
+              <input name="age" type="number" min="0" max="120" inputmode="numeric" placeholder="z. B. 42" required>
+            </label>
+
+            <div class="toggle-grid">
+              <label><input type="checkbox" name="pregnant"> Schwanger oder stillend</label>
+              <label><input type="checkbox" name="bloodThinner"> Blutgerinnungshemmer, z. B. Marcumar/Warfarin</label>
+              <label><input type="checkbox" name="kidney"> Nierenerkrankung oder Nierensteine</label>
+              <label><input type="checkbox" name="calcium"> Erhoehte Calciumwerte bekannt</label>
+              <label><input type="checkbox" name="sarcoidosis"> Sarkoidose oder Nebenschilddruesen-Erkrankung</label>
+              <label><input type="checkbox" name="otherD"> Bereits hochdosiertes Vitamin D</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="step" data-step="2">
+            <legend>Wie ist dein Vitamin-D-Status?</legend>
+            <p class="helper">Am besten eignet sich der 25-OH-Vitamin-D-Wert aus dem Labor.</p>
+
+            <label class="choice-row">
+              <input type="radio" name="knownLab" value="yes" checked>
+              <span>Ich habe einen Blutwert</span>
+            </label>
+            <label class="choice-row">
+              <input type="radio" name="knownLab" value="no">
+              <span>Ich kenne meinen Blutwert nicht</span>
+            </label>
+
+            <div class="lab-row" id="lab-fields">
+              <label>
+                <span>25-OH-D-Wert</span>
+                <input name="labValue" type="number" min="0" max="300" step="0.1" inputmode="decimal" placeholder="z. B. 24">
+              </label>
+              <label>
+                <span>Einheit</span>
+                <select name="labUnit">
+                  <option value="ng">ng/ml</option>
+                  <option value="nmol">nmol/l</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="select-row">
+              <span>Koerpergewicht</span>
+              <input name="weight" type="number" min="35" max="220" inputmode="numeric" placeholder="z. B. 78">
+            </label>
+          </fieldset>
+
+          <fieldset class="step" data-step="3">
+            <legend>Welche Faktoren beeinflussen deinen Bedarf?</legend>
+            <p class="helper">Diese Angaben veraendern die Orientierung, besonders wenn kein Blutwert vorliegt.</p>
+
+            <label class="select-row">
+              <span>Sonne im Alltag</span>
+              <select name="sun">
+                <option value="low">Wenig Sonne / viel drinnen</option>
+                <option value="normal">Regelmaessig draussen</option>
+                <option value="high">Viel Sonne / Sommerurlaub</option>
+              </select>
+            </label>
+
+            <label class="select-row">
+              <span>Ziel</span>
+              <select name="goal">
+                <option value="maintain">Erhalten / Alltag</option>
+                <option value="low">Niedrigen Wert verbessern</option>
+                <option value="unknown">Unsicher</option>
+              </select>
+            </label>
+
+            <label class="select-row">
+              <span>Aktuelle Vitamin-D-Einnahme</span>
+              <select name="currentIntake">
+                <option value="none">Keine</option>
+                <option value="low">Bis 1.000 I.E. taeglich</option>
+                <option value="high">Mehr als 1.000 I.E. taeglich</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <div class="form-nav">
+            <button type="button" class="ghost-action" id="prev-step">Zurueck</button>
+            <button type="button" class="primary-action" id="next-step">Weiter</button>
+            <button type="submit" class="primary-action" id="submit-check">Ergebnis anzeigen</button>
+          </div>
+        </form>
+
+        <section class="result" id="result" aria-live="polite" hidden>
+          <p class="eyebrow">Deine Orientierung</p>
+          <h2 id="result-title"></h2>
+          <p id="result-copy"></p>
+          <ul id="result-list"></ul>
+          <div class="notice">
+            Finale Dosierung bitte mit Arzt oder Apotheke bestaetigen,
+            besonders bei Langzeiteinnahme, Vorerkrankungen oder Medikamenten.
+          </div>
+        </section>
+      </section>
+
+      <section class="lead-section">
+        <div>
+          <p class="eyebrow">Dranbleiben</p>
+          <h2>Ergebnis sichern und Tipps erhalten</h2>
+          <p>
+            Erhalte eine kurze Erinnerung fuer Blutwert-Check, Einnahmeintervall
+            und SonnVita-Hinweise per E-Mail oder WhatsApp.
+          </p>
+        </div>
+        <form id="lead-form" class="lead-form">
+          <label>
+            <span>E-Mail</span>
+            <input name="email" type="email" placeholder="du@example.de" required>
+          </label>
+          <label>
+            <span>WhatsApp Nummer optional</span>
+            <input name="phone" type="tel" placeholder="+49 ...">
+          </label>
+          <label class="consent">
+            <input type="checkbox" required>
+            <span>Ich moechte Gesundheits- und Produktinfos von SOS-Apo erhalten und kann mich jederzeit abmelden.</span>
+          </label>
+          <button type="submit" class="primary-action">Speichern</button>
+          <p class="form-note" id="lead-note">Prototyp: noch nicht mit einem Marketing-System verbunden.</p>
+        </form>
+      </section>
+
+      <section class="usage-band">
+        <img src="./assets/usage.png" alt="SonnVita Anwendung mit einem Tropfen alle fuenf Tage">
+      </section>
+
+      <section class="legal">
+        <h2>Wichtige Hinweise</h2>
+        <p>
+          Nahrungsergaenzungsmittel sind kein Ersatz fuer eine ausgewogene und
+          abwechslungsreiche Ernaehrung sowie eine gesunde Lebensweise. Die
+          empfohlene Tagesdosis darf nicht ueberschritten werden. Fuer Kinder,
+          Jugendliche und Schwangere nicht geeignet. Bei Einnahme
+          blutgerinnungshemmender Medikamente vor der Verwendung aerztlichen Rat
+          einholen. Kuehl, trocken und ausserhalb der Reichweite von kleinen
+          Kindern lagern.
+        </p>
+        <p>
+          Zielwerte und Ergebnislogik dienen der Orientierung. Als Blutwert wird
+          25-OH-Vitamin D verwendet; ng/ml ist die voreingestellte Einheit,
+          nmol/l wird automatisch umgerechnet.
+        </p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
