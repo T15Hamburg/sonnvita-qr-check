@@ -74,14 +74,16 @@ main {
 .hero {
   display: grid;
   min-height: calc(100svh - 60px);
-  align-items: end;
+  align-items: center;
+  gap: 18px;
   background:
     radial-gradient(circle at 86% 8%, rgba(248, 182, 23, 0.45), transparent 30%),
     linear-gradient(180deg, #fff 0%, var(--cream) 100%);
+  padding-bottom: 24px;
 }
 
 .hero-copy {
-  padding: 34px 20px 14px;
+  padding: 34px 20px 0;
 }
 
 .eyebrow {
@@ -149,11 +151,45 @@ p {
   color: var(--ink);
 }
 
-.hero img {
-  width: min(100%, 940px);
+.hero-visual {
+  position: relative;
+  width: min(82vw, 390px);
   margin: 0 auto;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.9), transparent 56%),
+    linear-gradient(180deg, rgba(255, 210, 91, 0.34), rgba(255, 255, 255, 0.96));
+  padding: 14px 14px 22px;
+}
+
+.hero-visual img {
   display: block;
+  width: 100%;
   object-fit: contain;
+  filter: drop-shadow(0 20px 22px rgba(101, 63, 12, 0.18));
+}
+
+.hero-dose {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid rgba(223, 0, 31, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 10px 12px;
+  box-shadow: 0 14px 28px rgba(101, 63, 12, 0.12);
+}
+
+.hero-dose strong {
+  color: var(--red);
+  line-height: 1;
+}
+
+.hero-dose span {
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .facts {
@@ -316,6 +352,14 @@ input[type="radio"] {
   margin-top: 18px;
 }
 
+.validation-message {
+  min-height: 20px;
+  margin: 10px 0 0;
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 750;
+}
+
 #submit-check {
   display: none;
 }
@@ -357,6 +401,10 @@ input[type="radio"] {
   max-width: none;
 }
 
+.lead-section[hidden] {
+  display: none;
+}
+
 .lead-section > * {
   width: min(100%, 920px);
   margin-inline: auto;
@@ -372,6 +420,22 @@ input[type="radio"] {
   gap: 14px;
   padding: 16px;
   color: var(--ink);
+}
+
+.lead-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.lead-benefits span {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 8px 10px;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .consent span {
@@ -402,15 +466,16 @@ input[type="radio"] {
     grid-template-columns: minmax(340px, 0.8fr) minmax(420px, 1.2fr);
     align-items: center;
     min-height: 720px;
+    gap: 0;
   }
 
   .hero-copy {
     padding-left: max(40px, calc((100vw - 1120px) / 2));
   }
 
-  .hero img {
-    width: 100%;
-    max-height: 690px;
+  .hero-visual {
+    width: min(48vw, 520px);
+    padding: 18px 18px 28px;
   }
 
   .check-shell,

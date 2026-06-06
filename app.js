@@ -16,6 +16,8 @@ const resultTitle = document.querySelector("#result-title");
 const resultCopy = document.querySelector("#result-copy");
 const resultList = document.querySelector("#result-list");
 const labFields = document.querySelector("#lab-fields");
+const validationMessage = document.querySelector("#validation-message");
+const leadSection = document.querySelector("#lead-section");
 let currentStep = 0;
 
 function showStep(index) {
@@ -165,6 +167,7 @@ function renderResult(outcome) {
     resultList.append(li);
   });
   result.hidden = false;
+  leadSection.hidden = false;
   result.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -172,9 +175,12 @@ function validateVisibleStep() {
   const inputs = [...steps[currentStep].querySelectorAll("input[required], select[required]")];
   const invalid = inputs.find((input) => !input.checkValidity());
   if (invalid) {
+    validationMessage.textContent = "Bitte fuelle zuerst das markierte Feld aus.";
     invalid.reportValidity();
+    invalid.focus();
     return false;
   }
+  validationMessage.textContent = "";
   return true;
 }
 
